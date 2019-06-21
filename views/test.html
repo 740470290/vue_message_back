@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /*#app,#myDiv{*/
+        /*height: 2000px;*/
+        /*}*/
+        /*#drawing{*/
+            /*background-color: #eee;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<form action="" novalidate>
+    <input type="text" size="5" minlength="5" id="d1">
+    <select name="location" id="loca">
+        <option value="123">123</option>
+        <option>456</option>
+        <option>789</option>
+    </select>
+    <input type="image">
+    <input type="submit">
+</form>
+
+<button id="d2" align="right">百度一下</button>
+<div dir="rtl" align="right">1234</div>
+<h3 id="myBtn" class="c1 c2" data-chen="123">1234</h3>
+<div id="myDiv" contenteditable="">1234</div>
+<canvas id="drawing" width="200" height="200"></canvas>
+<script>
+function jsonp(u, c) {
+            const n = "jsonp" + Math.random().toString().slice(2);
+            const s = document.createElement("script");
+            const h = document.head;
+            s.src = u + (u.includes('?') ? '&' : '?') + 'cb=' + n;
+            h.appendChild(s);
+            window[n] = function (r) {
+                c(r);
+                delete window[n];
+                h.removeChild(s);
+            };
+        }
+// const s = document.createElement("script");
+// // const s = new Image();
+// s.src="http://172.17.14.250/?callback=json";
+// document.body.appendChild(s);
+//     function json(data) {
+//         console.log(data)
+//     }
+jsonp("https://www.baidu.com/sugrec?prod=pc&wd=qq",function (da) {
+    console.log(da)
+})
+</script>
+</body>
+</html>
